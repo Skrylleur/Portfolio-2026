@@ -14,6 +14,7 @@ import { useEffect, useState } from "react"
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0)
+  const [autoPlay, setAutoPlay] = useState(true)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -57,6 +58,17 @@ export default function Home() {
       iconColor: "text-orange-600"
     }
   ]
+
+  // Auto-play effect for services
+  useEffect(() => {
+    if (!autoPlay) return
+
+    const interval = setInterval(() => {
+      setSelectedServiceIndex((prevIndex) => (prevIndex + 1) % services.length)
+    }, 4000) // Change every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [autoPlay, services.length])
 
   const projects = [
     {
@@ -412,18 +424,25 @@ export default function Home() {
           
           {/* Dynamic Services Layout */}
           <div className="space-y-8">
-            {/* First Row - 3 Compact Service Cards */}
-            <div className="grid grid-cols-3 gap-6">
-              {services.slice(0, 3).map((service, index) => (
+            {/* First Row - 4 Compact Service Cards */}
+            <div className="grid grid-cols-4 gap-4">
+              {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  layout
                   initial={{ y: 50, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  onClick={() => setSelectedServiceIndex(index)}
+                  onClick={() => {
+                    setSelectedServiceIndex(index)
+                    setAutoPlay(false) // Stop auto-play when user interacts
+                    
+                    // Restart auto-play after 10 seconds of inactivity
+                    setTimeout(() => {
+                      setAutoPlay(true)
+                    }, 10000)
+                  }}
                   className="group relative cursor-pointer"
                 >
                   <Card className={`p-6 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${service.gradient} h-full relative overflow-hidden ${selectedServiceIndex === index ? 'ring-2 ring-primary ring-opacity-50' : ''}`}>
@@ -456,11 +475,10 @@ export default function Home() {
 
             {/* Second Row - Detailed Service Card */}
             <motion.div
-              layout
+              key={`service-${selectedServiceIndex}`}
               initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
               className="w-full"
             >
               <Card className={`p-8 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${services[selectedServiceIndex].gradient} relative overflow-hidden`}>
@@ -493,11 +511,10 @@ export default function Home() {
                     <div className="flex flex-wrap gap-3">
                       {services[selectedServiceIndex].technologies.map((tech, techIndex) => (
                         <motion.div
-                          key={tech}
+                          key={`${selectedServiceIndex}-${tech}`}
                           initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
+                          animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                          viewport={{ once: true }}
                         >
                           <Badge variant="secondary" className="text-sm hover:bg-primary/10 transition-colors">
                             {tech}
