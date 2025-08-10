@@ -1,19 +1,16 @@
-"use client";
-
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Separator } from "@/components/ui/separator"
-import { ImageWithFallback } from "@/components/figma/ImageWithFallback"
+import { Button } from "./components/ui/button"
+import { Card } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { Input } from "./components/ui/input"
+import { Textarea } from "./components/ui/textarea"
+import { Separator } from "./components/ui/separator"
+import { ImageWithFallback } from "./components/figma/ImageWithFallback"
 import { Code, Globe, Smartphone, FileSpreadsheet, Mail, Github, Linkedin, ExternalLink, ChevronDown, ArrowRight, Zap, Target, Users } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { useEffect, useState } from "react"
 
-export default function Home() {
+export default function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [selectedServiceIndex, setSelectedServiceIndex] = useState(0)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -123,18 +120,6 @@ export default function Home() {
           className="absolute top-1/2 right-1/3 w-16 h-16 border-2 border-primary/20 rounded-full"
         />
 
-        {/* Nouveau carré gris mouvant */}
-        <motion.div
-          animate={{ 
-            rotate: 180,
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/3 left-1/3 w-20 h-20 bg-gradient-to-br from-gray-400 to-white rounded-lg shadow-lg opacity-40"
-        />
-
         {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="w-full h-full" 
@@ -179,7 +164,7 @@ export default function Home() {
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 2, delay: 1 }}
-                className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-primary to-accent"
+                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent"
               />
             </motion.div>
             <div className="hidden md:flex space-x-8">
@@ -247,19 +232,17 @@ export default function Home() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-5xl md:text-7xl mb-6"
+            className="text-5xl md:text-7xl mb-6 relative"
           >
-            <div className="relative inline-block">
-              <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-                Développeur Web & VBA
-              </span>
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 1.5 }}
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"
-              />
-            </div>
+            <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+              Développeur Web & VBA
+            </span>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 1.5 }}
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"
+            />
           </motion.h1>
           
           <motion.p
@@ -384,134 +367,69 @@ export default function Home() {
                 className="w-16 h-16 border-2 border-dotted border-primary/30 rounded-full"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl mb-6">
-              {["M", "e", "s", " ", "S", "e", "r", "v", "i", "c", "e", "s"].map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ scale: 1 }}
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{ 
-                    duration: 0.6,
-                    delay: index * 0.15,
-                    repeat: Infinity,
-                    repeatDelay: 2,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-block"
-                >
-                  {letter === " " ? "\u00A0" : letter}
-                </motion.span>
-              ))}
-            </h2>
+            <h2 className="text-4xl md:text-5xl mb-6">Mes Services</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Des solutions sur mesure pour développer votre activité
             </p>
           </motion.div>
           
-          {/* Dynamic Services Layout */}
-          <div className="space-y-8">
-            {/* First Row - 3 Compact Service Cards */}
-            <div className="grid grid-cols-3 gap-6">
-              {services.slice(0, 3).map((service, index) => (
-                <motion.div
-                  key={index}
-                  layout
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  onClick={() => setSelectedServiceIndex(index)}
-                  className="group relative cursor-pointer"
-                >
-                  <Card className={`p-6 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${service.gradient} h-full relative overflow-hidden ${selectedServiceIndex === index ? 'ring-2 ring-primary ring-opacity-50' : ''}`}>
-                    {/* Animated Border */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group relative"
+              >
+                <Card className={`p-8 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${service.gradient} h-full relative overflow-hidden`}>
+                  {/* Animated Border */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  
+                  <div className="flex items-start space-x-4 relative z-10">
                     <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ duration: 0.8, delay: index * 0.1 }}
-                      className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-                    
-                    <div className="text-center relative z-10">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        className="p-4 rounded-2xl bg-gradient-to-br from-background to-accent/50 mx-auto mb-4 w-16 h-16 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
-                      >
-                        <service.icon className={`w-8 h-8 ${service.iconColor}`} />
-                      </motion.div>
-                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-4 rounded-2xl bg-gradient-to-br from-background to-accent/50 flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow"
+                    >
+                      <service.icon className={`w-8 h-8 ${service.iconColor}`} />
+                    </motion.div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl mb-4 group-hover:text-primary transition-colors">
                         {service.title}
                       </h3>
-                    </div>
-
-                    {/* Corner Decoration */}
-                    <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Second Row - Detailed Service Card */}
-            <motion.div
-              layout
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="w-full"
-            >
-              <Card className={`p-8 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${services[selectedServiceIndex].gradient} relative overflow-hidden`}>
-                {/* Animated Border */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"
-                />
-                
-                <div className="flex items-start space-x-6 relative z-10">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="p-6 rounded-2xl bg-gradient-to-br from-background to-accent/50 flex-shrink-0 shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    {(() => {
-                      const selectedService = services[selectedServiceIndex];
-                      const IconComponent = selectedService.icon;
-                      return <IconComponent className={`w-12 h-12 ${selectedService.iconColor}`} />;
-                    })()}
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-3xl mb-4 text-primary font-bold">
-                      {services[selectedServiceIndex].title}
-                    </h3>
-                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                      {services[selectedServiceIndex].description}
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      {services[selectedServiceIndex].technologies.map((tech, techIndex) => (
-                        <motion.div
-                          key={tech}
-                          initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Badge variant="secondary" className="text-sm hover:bg-primary/10 transition-colors">
-                            {tech}
-                          </Badge>
-                        </motion.div>
-                      ))}
+                      <p className="text-muted-foreground mb-6 leading-relaxed group-hover:text-foreground/80 transition-colors">
+                        {service.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {service.technologies.map((tech, techIndex) => (
+                          <motion.div
+                            key={tech}
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: (index * 0.1) + (techIndex * 0.05) }}
+                            viewport={{ once: true }}
+                          >
+                            <Badge variant="secondary" className="text-sm hover:bg-primary/10 transition-colors">
+                              {tech}
+                            </Badge>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Corner Decoration */}
-                <div className="absolute top-6 right-6 w-10 h-10 border-r-2 border-t-2 border-primary/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
-              </Card>
-            </motion.div>
+                  {/* Corner Decoration */}
+                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -526,27 +444,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl mb-6">
-              {["P", "r", "o", "j", "e", "t", "s", " ", "R", "é", "c", "e", "n", "t", "s"].map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ scale: 1 }}
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{ 
-                    duration: 0.6,
-                    delay: index * 0.15,
-                    repeat: Infinity,
-                    repeatDelay: 2,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-block"
-                >
-                  {letter === " " ? "\u00A0" : letter}
-                </motion.span>
-              ))}
-            </h2>
+            <h2 className="text-4xl md:text-5xl mb-6">Projets Récents</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Quelques réalisations qui illustrent mon expertise
             </p>
@@ -655,27 +553,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="relative z-10"
           >
-            <h2 className="text-4xl md:text-5xl mb-8">
-              {["À", " ", "P", "r", "o", "p", "o", "s"].map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ scale: 1 }}
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{ 
-                    duration: 0.6,
-                    delay: index * 0.15,
-                    repeat: Infinity,
-                    repeatDelay: 2,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-block"
-                >
-                  {letter === " " ? "\u00A0" : letter}
-                </motion.span>
-              ))}
-            </h2>
+            <h2 className="text-4xl md:text-5xl mb-8">À Propos</h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -720,27 +598,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl mb-6">
-              {["C", "o", "n", "t", "a", "c", "t", "e", "z", "-", "m", "o", "i"].map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ scale: 1 }}
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{ 
-                    duration: 0.6,
-                    delay: index * 0.15,
-                    repeat: Infinity,
-                    repeatDelay: 2,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-block"
-                >
-                  {letter === "-" ? "\u2013" : letter}
-                </motion.span>
-              ))}
-            </h2>
+            <h2 className="text-4xl md:text-5xl mb-6">Contactez-moi</h2>
             <p className="text-xl text-muted-foreground">
               Discutons de votre projet ensemble
             </p>
@@ -858,7 +716,7 @@ export default function Home() {
                     viewport={{ once: true }}
                   >
                     <Button className="w-full group relative overflow-hidden">
-                      <span className="relative z-10 flex items-center center gap-2">
+                      <span className="relative z-10 flex items-center justify-center gap-2">
                         Envoyer le message
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </span>
