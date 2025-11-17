@@ -62,6 +62,24 @@ const nextConfig: NextConfig = {
   
   // Optimisations de webpack
   webpack: (config, { dev, isServer }) => {
+    // Exclure le dossier "dossier sans titre" du build
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+    
+    // Exclure le dossier "dossier sans titre" de tous les loaders
+    const excludePattern = /dossier sans titre/;
+    config.module.rules.forEach((rule: any) => {
+      if (rule.exclude) {
+        if (Array.isArray(rule.exclude)) {
+          rule.exclude.push(excludePattern);
+        } else {
+          rule.exclude = [rule.exclude, excludePattern];
+        }
+      } else {
+        rule.exclude = excludePattern;
+      }
+    });
+
     // Optimisations pour la production
     if (!dev && !isServer) {
       config.optimization.splitChunks = {

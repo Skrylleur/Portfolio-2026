@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
-import reactPlugin from '@eslint/eslint-plugin-react';
-import reactHooksPlugin from '@eslint/eslint-plugin-react-hooks';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 
@@ -174,6 +174,7 @@ export default [
       '*.config.js',
       '*.config.mjs',
       '*.config.ts',
+      'dossier sans titre/**',
     ],
   },
 ];
