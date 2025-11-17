@@ -20,7 +20,7 @@ export default function Home() {
 
   const stats = [
     { icon: Target, value: "170+", label: "Projets réalisés" },
-    { icon: Users, value: "10+", label: "Clients satisfaits" },
+    { icon: Users, value: "5+", label: "Clients satisfaits" },
     { icon: Zap, value: "3+", label: "Années d'expérience" }
   ]
 

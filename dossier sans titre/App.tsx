@@ -83,9 +83,9 @@ export default function App() {
   ]
 
   const stats = [
-    { icon: Target, value: "50+", label: "Projets Réalisés" },
-    { icon: Users, value: "30+", label: "Clients Satisfaits" },
-    { icon: Zap, value: "5+", label: "Années d'Expérience" }
+    { icon: Target, value: "170+", label: "Projets Réalisés" },
+    { icon: Users, value: "5+", label: "Clients Satisfaits" },
+    { icon: Zap, value: "3+", label: "Années d'Expérience" }
   ]
 
   return (

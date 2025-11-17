@@ -8,19 +8,19 @@ import Navigation from "@/components/Navigation"
 export default function AboutPage() {
   const skills = [
     { name: "React", level: 90, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "TypeScript", level: 85, color: "from-[#2d4205] to-[#1a2803]" },
-    { name: "Next.js", level: 88, color: "from-gray-700 to-gray-900" },
-    { name: "Node.js", level: 80, color: "from-green-500 to-green-700" },
-    { name: "VBA", level: 92, color: "from-green-600 to-emerald-700" },
-    { name: "Python", level: 75, color: "from-yellow-500 to-orange-500" },
+    { name: "TypeScript", level: 85, color: "from-[#afc8ad] to-[#2d4205]" },
+    { name: "Next.js", level: 88, color: "from-[#afc8ad] to-[#2d4205]" },
+    { name: "Node.js", level: 80, color: "from-[#afc8ad] to-[#2d4205]" },
+    { name: "VBA", level: 92, color: "from-[#afc8ad] to-[#2d4205]" },
+    { name: "Python", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
     { name: "PostgreSQL", level: 78, color: "from-[#afc8ad] to-[#2d4205]" },
     { name: "Tailwind CSS", level: 85, color: "from-[#afc8ad] to-[#2d4205]" }
   ]
 
   const stats = [
-    { icon: Target, value: "50+", label: "Projets Réalisés" },
-    { icon: Users, value: "30+", label: "Clients Satisfaits" },
-    { icon: Zap, value: "5+", label: "Années d&apos;Expérience" }
+    { icon: Target, value: "170+", label: "Projets Réalisés" },
+    { icon: Users, value: "5+", label: "Clients Satisfaits" },
+    { icon: Zap, value: "3+", label: "Années d'Expérience" }
   ]
 
   return (
