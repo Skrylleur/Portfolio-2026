@@ -180,42 +180,45 @@ export default function ServicesPage() {
             </div>
 
             {/* Second Row - Detailed Service Card */}
-            <motion.div
-              key={`service-${selectedServiceIndex}`}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="w-full"
-            >
-              <Card className={`p-8 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${services[selectedServiceIndex].gradient} relative overflow-hidden`}>
-                {/* Animated Border */}
+            {(() => {
+              const selectedService = services[selectedServiceIndex];
+              if (!selectedService) return null;
+              
+              const IconComponent = selectedService.icon;
+              
+              return (
                 <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"
-                />
-                
-                <div className="flex items-start space-x-6 relative z-10">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="p-6 rounded-2xl bg-gradient-to-br from-background to-accent/50 flex-shrink-0 shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    {(() => {
-                      const selectedService = services[selectedServiceIndex];
-                      const IconComponent = selectedService.icon;
-                      return <IconComponent className={`w-12 h-12 ${selectedService.iconColor}`} />;
-                    })()}
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-3xl mb-4 text-primary font-bold">
-                      {services[selectedServiceIndex].title}
-                    </h3>
-                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                      {services[selectedServiceIndex].description}
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      {services[selectedServiceIndex].technologies.map((tech, techIndex) => (
+                  key={`service-${selectedServiceIndex}`}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-full"
+                >
+                  <Card className={`p-8 hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${selectedService.gradient} relative overflow-hidden`}>
+                    {/* Animated Border */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                      className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"
+                    />
+                    
+                    <div className="flex items-start space-x-6 relative z-10">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="p-6 rounded-2xl bg-gradient-to-br from-background to-accent/50 flex-shrink-0 shadow-lg hover:shadow-xl transition-shadow"
+                      >
+                        <IconComponent className={`w-12 h-12 ${selectedService.iconColor}`} />
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="text-3xl mb-4 text-primary font-bold">
+                          {selectedService.title}
+                        </h3>
+                        <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                          {selectedService.description}
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          {selectedService.technologies.map((tech, techIndex) => (
                         <motion.div
                           key={`${selectedServiceIndex}-${tech}`}
                           initial={{ opacity: 0, scale: 0 }}
@@ -225,16 +228,18 @@ export default function ServicesPage() {
                           <Badge variant="secondary" className="text-sm hover:bg-primary/10 transition-colors">
                             {tech}
                           </Badge>
-                        </motion.div>
-                      ))}
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Corner Decoration */}
-                <div className="absolute top-6 right-6 w-10 h-10 border-r-2 border-t-2 border-primary/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
-              </Card>
-            </motion.div>
+                  {/* Corner Decoration */}
+                  <div className="absolute top-6 right-6 w-10 h-10 border-r-2 border-t-2 border-primary/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                </Card>
+              </motion.div>
+              );
+            })()}
           </div>
         </div>
       </section>
