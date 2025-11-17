@@ -25,6 +25,11 @@ export default [
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       // Règles TypeScript
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
@@ -127,7 +132,7 @@ export default [
       'yoda': 'error',
 
       // Règles de formatage
-      'indent': ['error', 2, { SwitchCase: 1 }],
+      'indent': 'off', // Désactivé pour éviter les problèmes de stack overflow avec TypeScript
       'quotes': ['error', 'single', { avoidEscape: true }],
       'semi': ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
