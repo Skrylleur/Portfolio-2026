@@ -33,7 +33,7 @@ export default function App() {
       icon: FileSpreadsheet,
       title: "Automatisations Excel",
       description: "Développement de macros VBA et automatisations pour optimiser vos processus métier.",
-      technologies: ["VBA", "Excel", "Power Query", "Power Automate"],
+      technologies: ["VBA", "Excel"],
       gradient: "from-green-500/10 to-emerald-500/10",
       iconColor: "text-green-600"
     },
@@ -52,33 +52,6 @@ export default function App() {
       technologies: ["React Native", "Flutter", "iOS", "Android"],
       gradient: "from-orange-500/10 to-red-500/10",
       iconColor: "text-orange-600"
-    }
-  ]
-
-  const projects = [
-    {
-      title: "E-commerce Modern",
-      description: "Plateforme e-commerce complète avec gestion des stocks et paiements",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      technologies: ["Next.js", "Stripe", "PostgreSQL"],
-      link: "#",
-      color: "blue"
-    },
-    {
-      title: "Dashboard Analytics",
-      description: "Interface de gestion avec tableaux de bord interactifs",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      technologies: ["React", "D3.js", "Node.js"],
-      link: "#",
-      color: "purple"
-    },
-    {
-      title: "Automatisation RH",
-      description: "Suite d'outils Excel pour la gestion des ressources humaines",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-      technologies: ["VBA", "Excel", "Power BI"],
-      link: "#",
-      color: "green"
     }
   ]
 
@@ -744,7 +717,7 @@ export default function App() {
             className="text-center"
           >
             <p className="text-muted-foreground mb-4">
-            © 2025 Antonin GOURINCHAS. Développeur Full-Stack Web, mobile & VBA.
+              © 2025 Antonin GOURINCHAS. Développeur Full-Stack Web, mobile & VBA.
             </p>
             <motion.div
               initial={{ width: 0 }}
