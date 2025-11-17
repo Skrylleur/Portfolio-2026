@@ -1,4 +1,6 @@
 import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import type { FragmentInstance } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
@@ -42,13 +44,13 @@ export interface CardProps
   asChild?: boolean;
 }
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>(
+const Card = React.forwardRef<HTMLDivElement | FragmentInstance, CardProps>(
   ({ className, variant, padding, hover, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? React.Fragment : "div"
+    const Comp = asChild ? Slot : "div"
     return (
       <Comp
         className={cn(cardVariants({ variant, padding, hover, className }))}
-        ref={ref}
+        ref={ref as React.ForwardedRef<any>}
         {...props}
       />
     )

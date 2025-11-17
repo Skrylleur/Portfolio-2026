@@ -144,7 +144,6 @@ export default [
       'spaced-comment': ['error', 'always'],
       'arrow-spacing': 'error',
       'generator-star-spacing': ['error', { before: false, after: true }],
-      'rest-spacing': 'error',
       'template-curly-spacing': 'error',
       'yield-star-spacing': ['error', { before: false, after: true }],
     },
