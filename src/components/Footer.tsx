@@ -107,9 +107,8 @@ export default function Footer() {
               <ul className="space-y-2.5">
               {[
                 { href: "/CV Antonin GOURINCHAS.pdf", label: "Télécharger mon CV", download: true },
-                { href: "#", label: "Veille technologique" },
-                { href: "#", label: "Mentions légales" },
-                { href: "#", label: "Politique de confidentialité" },
+                { href: "/mentions-legales", label: "Mentions légales" },
+                { href: "/politique-confidentialite", label: "Politique de confidentialité" },
               ].map((item) => (
                   <li key={item.href + item.label}>
                     {item.download ? (

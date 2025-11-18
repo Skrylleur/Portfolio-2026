@@ -1,26 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Separator } from "@/components/ui/separator"
-import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Zap, MapPin, Phone } from "lucide-react"
-import Navigation from "@/components/Navigation"
-import Footer from "@/components/Footer"
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Zap, MapPin, CheckCircle2 } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
+
   const contactInfo = [
     { icon: Mail, text: "Mon mail", link: "mailto:antonin.gourinchas@gmail.com" },
     { icon: Github, text: "Mon compte GitHub", link: "https://github.com/Skrylleur" },
     { icon: Linkedin, text: "Mon Linkedin", link: "https://www.linkedin.com/in/antonin-gourinchas/" },
     { icon: MapPin, text: "Caen, France", link: null }
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
       <Navigation />
+      
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div
@@ -122,9 +127,9 @@ export default function ContactPage() {
                       onClick={() => {
                         if (item.link) {
                           if (item.link.startsWith('mailto:') || item.link.startsWith('tel:')) {
-                            window.location.href = item.link
+                            window.location.href = item.link;
                           } else {
-                            window.open(item.link, '_blank')
+                            window.open(item.link, '_blank');
                           }
                         }
                       }}
@@ -205,7 +210,32 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-primary" />
                   Envoyez un message
                 </h3>
-                <form className="space-y-4">
+                
+                <form 
+                  action="https://formspree.io/f/mvglgazl"
+                  method="POST"
+                  target="formspree-iframe"
+                  onSubmit={() => {
+                    setIsSubmitting(true);
+                  }}
+                  className="space-y-4"
+                >
+                  {/* Iframe caché pour éviter la redirection */}
+                  <iframe 
+                    name="formspree-iframe" 
+                    id="formspree-iframe"
+                    className="hidden"
+                    title="Formspree submission"
+                    onLoad={() => {
+                      setIsSubmitting(false);
+                      setSubmitStatus('success');
+                      const form = document.querySelector('form[action*="formspree"]') as HTMLFormElement;
+                      if (form) {
+                        form.reset();
+                      }
+                    }}
+                  />
+                  
                   <div className="grid md:grid-cols-2 gap-4">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -213,7 +243,14 @@ export default function ContactPage() {
                       transition={{ duration: 0.5, delay: 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <Input placeholder="Nom" className="border-primary/20 focus:border-primary" />
+                      <label htmlFor="name" className="sr-only">Nom</label>
+                      <Input 
+                        id="name"
+                        name="name"
+                        placeholder="Nom" 
+                        className="border-primary/20 focus:border-primary" 
+                        required
+                      />
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -221,35 +258,79 @@ export default function ContactPage() {
                       transition={{ duration: 0.5, delay: 0.2 }}
                       viewport={{ once: true }}
                     >
-                      <Input placeholder="Email" type="email" className="border-primary/20 focus:border-primary" />
+                      <label htmlFor="email" className="sr-only">Email</label>
+                      <Input 
+                        id="email"
+                        name="email"
+                        type="email" 
+                        placeholder="Email" 
+                        className="border-primary/20 focus:border-primary" 
+                        required
+                      />
                     </motion.div>
                   </div>
+                  
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <Input placeholder="Sujet" className="border-primary/20 focus:border-primary" />
+                    <label htmlFor="subject" className="sr-only">Sujet</label>
+                    <Input 
+                      id="subject"
+                      name="subject"
+                      placeholder="Sujet" 
+                      className="border-primary/20 focus:border-primary" 
+                      required
+                    />
                   </motion.div>
+                  
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     viewport={{ once: true }}
                   >
-                    <Textarea placeholder="Votre message..." rows={4} className="border-primary/20 focus:border-primary resize-none" />
+                    <label htmlFor="message" className="sr-only">Message</label>
+                    <Textarea 
+                      id="message"
+                      name="message"
+                      placeholder="Votre message..." 
+                      rows={6} 
+                      className="border-primary/20 focus:border-primary resize-none" 
+                      required
+                    />
                   </motion.div>
+                  
+                  {/* Message de succès */}
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-lg flex items-start gap-3 bg-green-500/10 border border-green-500/20"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <p className="text-sm text-green-600 dark:text-green-400">
+                        Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+                      </p>
+                    </motion.div>
+                  )}
+
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <Button className="w-full group relative overflow-hidden">
+                    <Button 
+                      type="submit"
+                      className="w-full group relative overflow-hidden"
+                      disabled={isSubmitting}
+                    >
                       <span className="relative z-10 flex items-center center gap-2">
-                        Envoyer le message
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                        {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                       </span>
                       <motion.div
                         whileHover={{ scale: 1.5 }}
@@ -276,7 +357,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      
       <Footer />
     </div>
-  )
+  );
 }

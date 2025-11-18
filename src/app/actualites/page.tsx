@@ -17,13 +17,13 @@ function LinkedInPost({ url }: LinkedInPostProps) {
   const extractPostInfo = (linkedinUrl: string): { id: string; type: 'activity' | 'ugcPost' } | null => {
     // Essayer d'abord avec activity-
     const activityMatch = linkedinUrl.match(/activity-(\d+)/);
-    if (activityMatch) {
+    if (activityMatch && activityMatch[1]) {
       return { id: activityMatch[1], type: 'activity' };
     }
     
     // Ensuite avec ugcPost-
     const ugcPostMatch = linkedinUrl.match(/ugcPost-(\d+)/);
-    if (ugcPostMatch) {
+    if (ugcPostMatch && ugcPostMatch[1]) {
       return { id: ugcPostMatch[1], type: 'ugcPost' };
     }
     
