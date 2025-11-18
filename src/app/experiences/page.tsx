@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function ExperiencesPage() {
-  const [selectedCategory, setSelectedCategory] = useState<'scolaire' | 'professionnelle' | 'associative'>('scolaire');
+  const [selectedCategory, setSelectedCategory] = useState<'scolaire' | 'professionnelle' | 'associative'>('professionnelle');
 
   const experiences = {
     scolaire: [
@@ -17,31 +17,25 @@ export default function ExperiencesPage() {
         title: 'Licence STS Développement applicatif web et mobile',
         organization: 'CaenSup Sainte Ursule, Caen',
         period: '2025 - 2026',
-        description: 'Licence 3 visant à former des professionnels du développement capables de concevoir et de réaliser des applications adaptées aux environnements web et mobiles, en tenant compte des contraintes spécifiques au multi-plateforme (responsive design, performances, compatibilité, etc.).',
+        description: 'Formation spécialisée en développement web et mobile (Next.js, Kotlin, Java Spring Boot) avec réalisation de projets complets.',
       },
       {
         title: 'BTS SIO en alternance (option SLAM)',
         organization: 'CaenSup Sainte Ursule, Caen',
         period: '2023 - 2025',
-        description: 'Formation spécialisée en développement d\'applications web et mobiles, avec des projets réalisés en PHP, Java, Kotlin et Next.js.',
-      },
-      {
-        title: 'Participation aux WorldSkills régionales',
-        organization: 'Caen',
-        period: 'Novembre 2024',
-        description: 'Finis deuxième en binôme sur 8 équipes.',
+        description: 'Formation en développement d\'applications (PHP, Java, Kotlin, Next.js) avec de nombreux projets pratiques.',
       },
       {
         title: 'BTS Comptabilité et gestion en alternance',
         organization: 'Dijon Formation, Quetigny',
         period: '2021 - 2023',
-        description: 'Formation spécialisée dans la comptabilité et la gestion.',
+        description: 'Formation spécialisée en gestion comptable et financière.',
       },
       {
         title: 'Licence Sciences et Techniques',
         organization: 'Université de Bourgogne, Dijon',
         period: '2020 - 2021',
-        description: 'Initiation aux mathématiques, à la physique ainsi que la chimie.',
+        description: 'Initiation avancée aux mathématiques, à la physique et à la chimie.',
       },
       {
         title: 'BAC S Spécialité Sciences de l\'ingénieur',
@@ -55,31 +49,31 @@ export default function ExperiencesPage() {
         title: 'Développeur web',
         organization: 'Zaacom, Caen',
         period: 'Septembre 2025 - Novembre 2025',
-        description: 'Automatisation du déploiement continu (CI/CD) via Github Actions. Reprise et sécurisation complète de trois applications web. Optimisations SQL (correction de requêtes, diagnostic d\'incohérences). Corrections d\'anomalies en production.',
+        description: 'Automatisation du déploiement continu (CI/CD) via GitHub Actions et sécurisation de trois applications web. Diagnostic SQL et résolution d\'anomalies en production.',
       },
       {
         title: 'Formateur en bureautique et Excel',
         organization: 'Cours particuliers',
         period: '2025',
-        description: 'Formation d\'adultes éloignés du numérique en bureautique et Excel. Accompagnement personnalisé pour développer leurs compétences numériques et favoriser leur inclusion numérique.',
+        description: 'Formation personnalisée d\'adultes en bureautique et Excel pour renforcer leur autonomie numérique.',
       },
       {
         title: 'Technicien informatique',
         organization: 'Cabinets Tacher Acogex, Caen',
         period: 'Septembre 2023 - Août 2025',
-        description: 'Conception et développement d\'outils automatisés visant à optimiser les processus de l\'entreprise. Prise en charge des incidents, du support téléphonique et physique auprès des utilisateurs. Gestion et maintenance du parc informatique, rédaction de documentation technique et fonctionnelle dans le cadre des projets menés. Restructuration du site internet de l\'entreprise et amélioration de son référencement naturel (SEO).',
+        description: 'Support informatique (incidents, téléphonie, physique), rédaction de documentation, développement d\'outils automatisés et participation à la refonte SEO du site de l\'entreprise.',
       },
       {
         title: 'Assistant contrôleur de gestion',
         organization: 'Laboratoires Urgo Healthcare, Chenôve',
         period: 'Septembre 2021 - Août 2023',
-        description: 'Gestion et surveillance des notes de frais des forces de vente. Gestion du parc de cartes affaires. Création de reportings réguliers automatisés sous Excel.',
+        description: 'Analyse de données, gestion de notes de frais, tableaux de bord et reportings automatisés sous Excel.',
       },
       {
         title: 'Equipier polyvalent en restauration',
-        organization: 'Orazur, Chevigny-Saint-Sauveur',
+        organization: 'O\'razur, Chevigny-Saint-Sauveur',
         period: 'Juin 2021 - Septembre 2021',
-        description: 'Préparation des aliments selon les normes de qualité. Maintien de la propreté et de l\'hygiène. Suivi des commandes et gestion des stocks.',
+        description: 'Préparation des plats, gestion des stocks et respect des normes d\'hygiène.',
       },
     ],
     associative: [
@@ -87,31 +81,31 @@ export default function ExperiencesPage() {
         title: 'Parade opératique du millénaire de Caen',
         organization: 'Millénaire de Caen',
         period: '9 mai 2025',
-        description: 'Gestion des flux, conseil et accompagnement de spectateurs.',
+        description: 'Gestion des flux, conseil et accompagnement des spectateurs.',
       },
       {
         title: 'Mission de mentorat',
-        organization: 'Association: Dema1n.org',
+        organization: 'Association: Demain.org',
         period: '2023 - 2025',
-        description: 'Accompagnement et conseil de jeunes étudiants dans leur première recherche d\'école ou d\'alternance.',
+        description: 'Accompagnement de jeunes étudiants dans leur orientation et leur recherche d\'école ou d\'alternance.',
       },
       {
         title: 'Tenu d\'un stand d\'école au salon de l\'étudiant',
         organization: 'Edition 2024 du salon de l\'étudiant de Caen',
         period: 'Décembre 2024',
-        description: 'Conseil et accueil de jeunes étudiants en recherche d\'une formation scolaire.',
+        description: 'Conseil et accueil de lycéens en recherche de formation.',
       },
       {
         title: 'Mission de soutien scolaire',
         organization: 'Association: AFEV',
         period: 'Janvier à Juin 2021',
-        description: 'Accompagnement et soutien scolaire pour un enfant HPI et hyperactif',
+        description: 'Aide aux devoirs et soutien scolaire pour un enfant HPI et hyperactif.',
       },
       {
         title: 'Organisation d\'une collecte de nourriture au profit des Restos du cœur',
         organization: 'Restos du cœur',
         period: 'Novembre 2019',
-        description: 'Organisation d\'une récolte de produits secs et alimentaires au profit de l\'association. Intervention auprès des classes pour inviter les élèves de l\'établissement à faire un don. Tenue d\'un stand pour faciliter la collecte des dons auprès des étudiants.',
+        description: 'Organisation d\'une collecte de produits alimentaires et sensibilisation des élèves à la solidarité.',
       },
     ],
   };
@@ -121,6 +115,12 @@ export default function ExperiencesPage() {
     { id: 'professionnelle' as const, name: 'Professionnelle', icon: Briefcase },
     { id: 'associative' as const, name: 'Associative', icon: Heart },
   ];
+
+  const categoryIntroductions = {
+    professionnelle: 'Mes expériences professionnelles reflètent mon évolution progressive dans le développement, la bureautique avancée et le support informatique. Elles démontrent ma capacité à être autonome, rigoureux et à m\'adapter rapidement aux environnements de travail.',
+    scolaire: 'Mon parcours scolaire m\'a permis d\'acquérir des bases solides en développement, en gestion et en sciences, renforçant ma polyvalence technique.',
+    associative: 'Mes engagements associatifs témoignent de mon sens du service, de ma capacité à accompagner, conseiller et à travailler avec des publics variés.',
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
@@ -185,9 +185,14 @@ export default function ExperiencesPage() {
                 </motion.span>
               ))}
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Mon parcours dans différents domaines
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-6"
+            >
+              Mes expériences regroupent mes missions en entreprise, mon parcours scolaire et mes engagements associatifs. Elles reflètent ma capacité à m&apos;adapter à des environnements variés tout en gardant une approche sérieuse, autonome et orientée résultats.
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -222,6 +227,19 @@ export default function ExperiencesPage() {
                 </Button>
               );
             })}
+          </motion.div>
+
+          {/* Category Introduction */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <p className="text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
+              {categoryIntroductions[selectedCategory]}
+            </p>
           </motion.div>
 
           {/* Experiences List */}

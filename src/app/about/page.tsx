@@ -10,41 +10,22 @@ export default function AboutPage() {
     {
       name: "Frontend",
       icon: Code,
-      skills: [
-        { name: "HTML", level: 85, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "CSS", level: 80, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "React", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "TypeScript", level: 70, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "Next.js", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "Tailwind CSS", level: 75, color: "from-[#afc8ad] to-[#2d4205]" }
-      ]
+      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML / CSS"]
     },
     {
       name: "Backend",
       icon: Database,
-      skills: [
-        { name: "Node.js", level: 70, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "PHP", level: 65, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "Python", level: 65, color: "from-[#afc8ad] to-[#2d4205]" }
-      ]
+      skills: ["Java Spring Boot", "Node.js", "PHP"]
     },
     {
       name: "Base de données",
       icon: Database,
-      skills: [
-        { name: "SQL", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "PrismaORM", level: 70, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "SQLite", level: 65, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "phpMyAdmin", level: 60, color: "from-[#afc8ad] to-[#2d4205]" }
-      ]
+      skills: ["SQL", "PrismaORM", "SQLite", "MySQL / phpMyAdmin"]
     },
     {
-      name: "Outils & Automatisation",
+      name: "Automatisation",
       icon: Wrench,
-      skills: [
-        { name: "Excel", level: 85, color: "from-[#afc8ad] to-[#2d4205]" },
-        { name: "VBA", level: 80, color: "from-[#afc8ad] to-[#2d4205]" }
-      ]
+      skills: ["Excel", "VBA", "Scripts d'automatisation"]
     }
   ]
 
@@ -110,17 +91,12 @@ export default function AboutPage() {
       </div>
 
       {/* Header Section */}
-      <section className="py-32 px-6 relative">
-        <div className="max-w-4xl mx-auto text-center relative">
-          {/* Decorative Quote Marks */}
-          <div className="absolute -top-8 left-8 text-6xl text-primary/10 select-none">&ldquo;</div>
-          <div className="absolute -bottom-8 right-8 text-6xl text-primary/10 select-none rotate-180">&rdquo;</div>
-          
+      <section className="pt-32 pb-12 px-6 relative">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10"
           >
             <h1 className="text-5xl md:text-6xl mb-8">
               {["À", " ", "P", "r", "o", "p", "o", "s"].map((letter, index) => (
@@ -143,31 +119,41 @@ export default function AboutPage() {
                 </motion.span>
               ))}
             </h1>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-left">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Passionné par le développement depuis plus de 5 ans, je me spécialise dans la création 
-                de solutions web modernes et l&apos;automatisation de processus métier.
+                Passionné par le développement depuis plus de 3 ans, je conçois des solutions web modernes et des outils d&apos;automatisation fiables pour optimiser les processus métier.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Mon expertise couvre le développement frontend avec <span className="text-primary">React et TypeScript</span>, 
-                la création d&apos;APIs robustes, et l&apos;automatisation Excel avec <span className="text-primary">VBA</span> pour optimiser 
-                vos workflows.
+                Mon expertise combine le développement front-end (React, Next.js, TypeScript), le back-end (Java Spring Boot, Node.js, PHP) et l&apos;automatisation avancée avec VBA, que j&apos;ai utilisée pour créer plus de 150 outils professionnels en cabinet comptable.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                Que ce soit pour créer votre présence en ligne ou automatiser vos tâches répétitives, 
-                je m&apos;engage à livrer des <span className="text-primary">solutions de qualité</span> qui répondent à vos besoins spécifiques.
+                Je travaille avec une approche méthodique et orientée résultats : comprendre un besoin, proposer une solution claire, développer proprement et livrer un produit efficace. Cette rigueur, je l&apos;ai développée à travers mes projets clients, mes alternances et mes projets personnels.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                Je suis autonome, sérieux et habitué à gérer des projets du besoin initial jusqu’à la mise en production.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Aujourd&apos;hui, je cherche à rejoindre une entreprise pour poursuivre mon parcours en Licence STS Développement Web et Mobile, progresser aux côtés de professionnels expérimentés et contribuer à des projets concrets avec sérieux, autonomie et motivation.
               </motion.p>
             </div>
           </motion.div>
@@ -175,7 +161,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-6 relative">
+      <section className="pt-8 pb-20 px-6 relative">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -228,46 +214,35 @@ export default function AboutPage() {
             </p>
           </motion.div>
           
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {skillCategories.map((category, categoryIndex) => {
               const IconComponent = category.icon
+              const isLastCategory = categoryIndex === skillCategories.length - 1
               return (
                 <motion.div
                   key={category.name}
-                  initial={{ x: -50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                   viewport={{ once: true }}
-                  className="space-y-4"
+                  className={`space-y-4 ${isLastCategory ? 'md:col-span-2' : ''}`}
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <IconComponent className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-foreground">{category.name}</h3>
                   </div>
-                  <div className="space-y-4 pl-8">
+                  <div className="flex flex-wrap gap-2 min-h-[60px]">
                     {category.skills.map((skill, skillIndex) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ x: -30, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
+                      <motion.span
+                        key={skill}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                         viewport={{ once: true }}
-                        className="group"
+                        className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-foreground hover:bg-primary/10 hover:border-primary/30 transition-colors"
                       >
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="font-medium">{skill.name}</span>
-                          <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
-                            viewport={{ once: true }}
-                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-500 group-hover:shadow-lg`}
-                          />
-                        </div>
-                      </motion.div>
+                        {skill}
+                      </motion.span>
                     ))}
                   </div>
                 </motion.div>
@@ -293,7 +268,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex flex-wrap justify-center gap-3">
             {languages.map((language, index) => (
               <motion.div
                 key={language.name}
@@ -301,14 +276,13 @@ export default function AboutPage() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="flex flex-col items-center gap-3 p-6 rounded-lg bg-primary/5 hover:bg-primary/10 transition-all border border-primary/10"
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 hover:border-primary/30 transition-colors"
               >
-                <Languages className="w-6 h-6 text-primary" />
-                <div className="text-center">
-                  <div className="font-semibold text-foreground mb-1">{language.name}</div>
-                  <div className="text-sm text-muted-foreground">{language.level}</div>
-                </div>
+                <Languages className="w-4 h-4 text-primary" />
+                <span className="font-medium text-foreground">{language.name}</span>
+                <span className="text-sm text-muted-foreground">•</span>
+                <span className="text-sm text-muted-foreground">{language.level}</span>
               </motion.div>
             ))}
           </div>
@@ -323,11 +297,11 @@ export default function AboutPage() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <h2 className="text-3xl md:text-4xl mb-6">Mes Passions</h2>
-            <p className="text-lg text-muted-foreground">
-              Ce qui m&apos;anime en dehors du développement
+            <p className="text-lg text-muted-foreground mb-4">
+              En dehors du développement, je pratique des activités qui renforcent ma discipline, ma persévérance et mon équilibre personnel.
             </p>
           </motion.div>
 

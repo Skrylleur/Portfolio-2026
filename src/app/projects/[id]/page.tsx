@@ -58,6 +58,24 @@ export default function ProjectDetailPage() {
       </div>
       
       <section className="pt-32 pb-8 px-6 relative">
+        {/* Bouton Retour */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-5xl mx-auto mb-6"
+        >
+          <Link href="/projects">
+            <Button
+              variant="ghost"
+              className="group flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              Retour aux projets
+            </Button>
+          </Link>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
