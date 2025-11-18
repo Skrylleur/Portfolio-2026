@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { useEffect, useState, useCallback } from "react"
 import Navigation from "@/components/Navigation"
-import { ChevronDown, ArrowRight, Zap, Target, Users } from "lucide-react"
+import Footer from "@/components/Footer"
+import { ChevronDown, ArrowRight, Zap, Target, Users, Download } from "lucide-react"
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -109,28 +110,6 @@ export default function Home() {
             />
           </div>
           
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="mb-8 relative"
-          >
-            {/* Code Symbols Animation */}
-            <div className="flex justify-center items-center space-x-4 mb-8" role="presentation" aria-hidden="true">
-              {["<", "/", ">"].map((symbol, index) => (
-                <motion.span
-                  key={symbol}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.2 }}
-                  className="text-6xl md:text-8xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
-                >
-                  {symbol}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-          
           {/* Nom et Prénom */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -230,12 +209,31 @@ export default function Home() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
           >
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 rounded-full group border-2 hover:border-primary/50">
               <a href="/projects" className="flex items-center gap-2" aria-label="Voir mes projets">
                 Voir mes projets
                 <ArrowRight className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
+              </a>
+            </Button>
+          </motion.div>
+
+          {/* Télécharger CV */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.3 }}
+            className="flex justify-center mb-16"
+          >
+            <Button 
+              variant="ghost" 
+              size="lg" 
+              className="text-lg px-8 py-6 rounded-full group text-muted-foreground hover:text-primary hover:bg-primary/10"
+            >
+              <a href="/CV%20Antonin%20GOURINCHAS.pdf" download="CV Antonin GOURINCHAS.pdf" className="flex items-center gap-2" aria-label="Télécharger mon CV">
+                <Download className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                Télécharger mon CV
               </a>
             </Button>
           </motion.div>
@@ -295,29 +293,7 @@ export default function Home() {
         />
       </main>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-border/50 relative" role="contentinfo">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <p className="text-muted-foreground mb-4">
-            © 2025 Antonin GOURINCHAS. Développeur Full-Stack Web, mobile & VBA.
-            </p>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "200px" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"
-            />
-          </motion.div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

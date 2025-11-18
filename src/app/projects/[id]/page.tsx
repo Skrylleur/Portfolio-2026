@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback"
 import { ExternalLink, ArrowLeft, Calendar, User, Code2, CheckCircle2, Clock, Check } from "lucide-react"
 import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { projects } from "@/data/projects"
@@ -195,6 +196,7 @@ export default function ProjectDetailPage() {
           </Card>
         </motion.div>
       </section>
+      <Footer />
     </div>
   )
 }

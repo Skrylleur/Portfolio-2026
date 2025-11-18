@@ -1,21 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { Target, Users, Zap } from "lucide-react"
+import { Target, Users, Zap, Code, Database, Wrench, Camera, Film, Bike, Activity, Waves, Mountain, Sailboat, Languages } from "lucide-react"
 import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
 
 export default function AboutPage() {
-  const skills = [
-    { name: "React", level: 90, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "TypeScript", level: 85, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "Next.js", level: 88, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "Node.js", level: 80, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "VBA", level: 92, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "Python", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "PostgreSQL", level: 78, color: "from-[#afc8ad] to-[#2d4205]" },
-    { name: "Tailwind CSS", level: 85, color: "from-[#afc8ad] to-[#2d4205]" }
+  const skillCategories = [
+    {
+      name: "Frontend",
+      icon: Code,
+      skills: [
+        { name: "HTML", level: 85, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "CSS", level: 80, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "React", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "TypeScript", level: 70, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "Next.js", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "Tailwind CSS", level: 75, color: "from-[#afc8ad] to-[#2d4205]" }
+      ]
+    },
+    {
+      name: "Backend",
+      icon: Database,
+      skills: [
+        { name: "Node.js", level: 70, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "PHP", level: 65, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "Python", level: 65, color: "from-[#afc8ad] to-[#2d4205]" }
+      ]
+    },
+    {
+      name: "Base de données",
+      icon: Database,
+      skills: [
+        { name: "SQL", level: 75, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "PrismaORM", level: 70, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "SQLite", level: 65, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "phpMyAdmin", level: 60, color: "from-[#afc8ad] to-[#2d4205]" }
+      ]
+    },
+    {
+      name: "Outils & Automatisation",
+      icon: Wrench,
+      skills: [
+        { name: "Excel", level: 85, color: "from-[#afc8ad] to-[#2d4205]" },
+        { name: "VBA", level: 80, color: "from-[#afc8ad] to-[#2d4205]" }
+      ]
+    }
   ]
+
+  const languages = [
+    { name: "Français", level: "Natif" },
+    { name: "Anglais", level: "Moyen" },
+    { name: "Espagnol", level: "Moyen" },
+    { name: "Portugais", level: "En apprentissage" }
+  ]
+
+  const passions = {
+    sport: [
+      { name: "Vélo", icon: Bike },
+      { name: "Course à pied", icon: Activity },
+      { name: "Natation", icon: Waves },
+      { name: "Triathlon", icon: Zap },
+      { name: "Randonnée", icon: Mountain },
+      { name: "Kayak en club", icon: Sailboat }
+    ],
+    autres: [
+      { name: "Cinéma", icon: Film },
+      { name: "Photographie", icon: Camera }
+    ]
+  }
 
   const stats = [
     { icon: Target, value: "170+", label: "Projets Réalisés" },
@@ -167,7 +220,7 @@ export default function AboutPage() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl mb-6">Compétences Techniques</h2>
             <p className="text-lg text-muted-foreground">
@@ -175,34 +228,177 @@ export default function AboutPage() {
             </p>
           </motion.div>
           
-          <div className="space-y-6">
-            {skills.map((skill, index) => (
+          <div className="space-y-8">
+            {skillCategories.map((category, categoryIndex) => {
+              const IconComponent = category.icon
+              return (
+                <motion.div
+                  key={category.name}
+                  initial={{ x: -50, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                  viewport={{ once: true }}
+                  className="space-y-4"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <IconComponent className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">{category.name}</h3>
+                  </div>
+                  <div className="space-y-4 pl-8">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ x: -30, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
+                        viewport={{ once: true }}
+                        className="group"
+                      >
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium">{skill.name}</span>
+                          <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            transition={{ duration: 1, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
+                            viewport={{ once: true }}
+                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-500 group-hover:shadow-lg`}
+                          />
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Languages Section */}
+      <section className="py-20 px-6 relative">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl mb-6">Langues</h2>
+            <p className="text-lg text-muted-foreground">
+              Mes compétences linguistiques
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {languages.map((language, index) => (
               <motion.div
-                key={skill.name}
-                initial={{ x: -50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                key={language.name}
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="flex flex-col items-center gap-3 p-6 rounded-lg bg-primary/5 hover:bg-primary/10 transition-all border border-primary/10"
               >
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium">{skill.name}</span>
-                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-500 group-hover:shadow-lg`}
-                  />
+                <Languages className="w-6 h-6 text-primary" />
+                <div className="text-center">
+                  <div className="font-semibold text-foreground mb-1">{language.name}</div>
+                  <div className="text-sm text-muted-foreground">{language.level}</div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Passions Section */}
+      <section className="py-20 px-6 relative">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl mb-6">Mes Passions</h2>
+            <p className="text-lg text-muted-foreground">
+              Ce qui m&apos;anime en dehors du développement
+            </p>
+          </motion.div>
+
+          <div className="space-y-8">
+            {/* Sport */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
+                <Bike className="w-5 h-5 text-primary" />
+                Sport
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {passions.sport.map((passion, index) => {
+                  const IconComponent = passion.icon
+                  return (
+                    <motion.div
+                      key={passion.name}
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="flex items-center gap-3 p-4 rounded-lg bg-primary/5 hover:bg-primary/10 transition-all border border-primary/10"
+                    >
+                      <IconComponent className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{passion.name}</span>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </motion.div>
+
+            {/* Autres */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
+                <Camera className="w-5 h-5 text-primary" />
+                Autres
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {passions.autres.map((passion, index) => {
+                  const IconComponent = passion.icon
+                  return (
+                    <motion.div
+                      key={passion.name}
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="flex items-center gap-3 p-4 rounded-lg bg-primary/5 hover:bg-primary/10 transition-all border border-primary/10"
+                    >
+                      <IconComponent className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{passion.name}</span>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      <Footer />
     </div>
-  )
+  );
 }

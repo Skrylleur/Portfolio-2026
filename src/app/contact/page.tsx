@@ -8,14 +8,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
 import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Zap, MapPin, Phone } from "lucide-react"
 import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
 
 export default function ContactPage() {
   const contactInfo = [
-    { icon: Mail, text: "antonin.gourinchas@email.com", link: "mailto:antonin.gourinchas@email.com" },
-    { icon: Github, text: "github.com/antonin-gourinchas", link: "https://github.com/antonin-gourinchas" },
-    { icon: Linkedin, text: "linkedin.com/in/antonin-gourinchas", link: "https://linkedin.com/in/antonin-gourinchas" },
-    { icon: MapPin, text: "Paris, France", link: null },
-    { icon: Phone, text: "+33 6 XX XX XX XX", link: "tel:+336XXXXXXXXX" }
+    { icon: Mail, text: "Mon mail", link: "mailto:antonin.gourinchas@gmail.com" },
+    { icon: Github, text: "Mon compte GitHub", link: "https://github.com/Skrylleur" },
+    { icon: Linkedin, text: "Mon Linkedin", link: "https://www.linkedin.com/in/antonin-gourinchas/" },
+    { icon: MapPin, text: "Caen, France", link: null }
   ]
 
   return (
@@ -52,7 +52,7 @@ export default function ContactPage() {
       </div>
 
       {/* Header Section */}
-      <section className="py-32 px-6 relative">
+      <section className="pt-32 pb-8 px-6 relative">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
@@ -82,14 +82,14 @@ export default function ContactPage() {
               ))}
             </h1>
             <p className="text-xl text-muted-foreground">
-              Discutons de votre projet ensemble
+              Discutons de vos projets ensemble
             </p>
           </motion.div>
         </div>
       </section>
       
       {/* Contact Form Section */}
-      <section className="py-20 px-6 relative">
+      <section className="pt-0 pb-20 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Information */}
@@ -153,7 +153,7 @@ export default function ContactPage() {
                   <p className="text-muted-foreground">
                     Actuellement disponible pour de nouveaux projets. 
                     <br />
-                    <span className="text-primary">Temps de réponse habituel : 24h</span>
+                    <span className="text-primary">Temps de réponse habituel : moins de 24h</span>
                   </p>
                 </motion.div>
 
@@ -166,13 +166,28 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="bg-gradient-to-r from-primary/5 to-accent/5 p-4 rounded-lg"
                 >
-                  <h4 className="font-medium mb-2">Pourquoi me contacter ?</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Développement de sites web modernes</li>
-                    <li>• Automatisation de processus Excel</li>
-                    <li>• Création d&apos;APIs et solutions backend</li>
-                    <li>• Applications mobiles cross-platform</li>
-                    <li>• Optimisation et maintenance de systèmes</li>
+                  <h4 className="font-medium mb-3">Pourquoi me contacter ?</h4>
+                  <ul className="text-sm text-muted-foreground space-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>Vous recherchez <span className="text-primary font-medium">votre futur alternant</span> en développement web et mobile</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>Vous recherchez un <span className="text-primary font-medium">esprit jeune et efficace</span>, prêt à relever de nouveaux défis</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>Vous souhaitez intégrer un <span className="text-primary font-medium">développeur passionné</span> avec une solide expérience pratique</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>Vous avez besoin de quelqu&apos;un capable de <span className="text-primary font-medium">s&apos;adapter rapidement</span> et d&apos;apporter des solutions innovantes</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>Vous valorisez l&apos;<span className="text-primary font-medium">autonomie</span> et la <span className="text-primary font-medium">proactivité</span> dans votre équipe</span>
+                    </li>
                   </ul>
                 </motion.div>
               </Card>
@@ -261,6 +276,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

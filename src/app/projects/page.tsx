@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback"
 import { ExternalLink, Github, Calendar, User, Code2, CheckCircle2, Clock } from "lucide-react"
 import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
 import { useState } from "react"
 import Link from "next/link"
 import { projects } from "@/data/projects"
@@ -85,7 +86,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Header Section */}
-      <section className="py-32 px-6 relative">
+      <section className="pt-32 pb-4 px-6 relative">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
@@ -100,7 +101,7 @@ export default function ProjectsPage() {
                 className="w-16 h-16 border-2 border-dotted border-primary/30 rounded-full"
               />
             </div>
-            <h1 className="text-5xl md:text-6xl mb-6">
+            <h1 className="text-5xl md:text-6xl mb-4">
               {["M", "e", "s", " ", "P", "r", "o", "j", "e", "t", "s"].map((letter, index) => (
                 <motion.span
                   key={index}
@@ -129,7 +130,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="px-6 mb-12 relative">
+      <section className="px-6 mb-12 relative pt-0">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -339,29 +340,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-border/50 relative" role="contentinfo">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <p className="text-muted-foreground mb-4">
-            © 2025 Antonin GOURINCHAS. Développeur Full-Stack Web, mobile & VBA.
-            </p>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "200px" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"
-            />
-          </motion.div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

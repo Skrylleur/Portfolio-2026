@@ -11,6 +11,7 @@ export default function Navigation() {
   const navItems = [
     { name: "Projets", href: "/projects" },
     { name: "À propos", href: "/about" },
+    { name: "Mes expériences", href: "/experiences" },
     { name: "Contact", href: "/contact" }
   ]
 
@@ -25,6 +26,22 @@ export default function Navigation() {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   const closeMenu = () => setIsOpen(false)
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    closeMenu()
+    if (href.includes('#')) {
+      e.preventDefault()
+      const [path, hash] = href.split('#')
+      if (window.location.pathname === path) {
+        const element = document.getElementById(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      } else {
+        window.location.href = href
+      }
+    }
+  }
 
   return (
     <motion.nav 
@@ -69,7 +86,7 @@ export default function Navigation() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -2, scale: 1.05 }}
                 className="text-muted-foreground hover:text-foreground transition-colors relative group font-medium"
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.name}
                 <motion.div
@@ -136,7 +153,7 @@ export default function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     className="block py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg transition-all duration-200 font-medium"
-                    onClick={closeMenu}
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     {item.name}
                   </motion.a>
