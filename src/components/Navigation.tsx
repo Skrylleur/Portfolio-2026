@@ -12,6 +12,7 @@ export default function Navigation() {
     { name: "Projets", href: "/projects" },
     { name: "À propos", href: "/about" },
     { name: "Mes expériences", href: "/experiences" },
+    { name: "Actualités", href: "/actualites" },
     { name: "Contact", href: "/contact" }
   ]
 

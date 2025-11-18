@@ -3,9 +3,14 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState<number>(2025);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="border-t border-primary/20 bg-gradient-to-b from-background to-background/95 backdrop-blur-sm mt-20">
@@ -80,9 +85,10 @@ export default function Footer() {
                   { href: "/about", label: "À propos" },
                   { href: "/experiences", label: "Expériences" },
                   { href: "/projects", label: "Projets" },
+                  { href: "/actualites", label: "Actualités" },
                   { href: "/contact", label: "Contact" },
-                ].map((item, index) => (
-                  <li key={index}>
+                ].map((item) => (
+                  <li key={item.href}>
                     <Link
                       href={item.href}
                       className="group text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center gap-2"
@@ -104,8 +110,8 @@ export default function Footer() {
                 { href: "#", label: "Veille technologique" },
                 { href: "#", label: "Mentions légales" },
                 { href: "#", label: "Politique de confidentialité" },
-              ].map((item, index) => (
-                  <li key={index}>
+              ].map((item) => (
+                  <li key={item.href + item.label}>
                     {item.download ? (
                       <a
                         href="/CV%20Antonin%20GOURINCHAS.pdf"
