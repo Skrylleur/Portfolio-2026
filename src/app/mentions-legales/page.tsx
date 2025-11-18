@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -94,24 +95,42 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">4. Données personnelles</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">4. Données personnelles et cookies</h2>
                 <p>
                   Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification, de suppression et d&apos;opposition aux données personnelles vous concernant.
                 </p>
                 <p className="mt-4">
                   Pour exercer ce droit, vous pouvez me contacter à l&apos;adresse suivante : antonin.gourinchas@gmail.com
                 </p>
+                <p className="mt-4">
+                  Ce site utilise des cookies et technologies de suivi (notamment Google Analytics) uniquement avec votre consentement explicite. Pour plus d&apos;informations sur l&apos;utilisation des cookies et la gestion de vos données personnelles, consultez notre <Link href="/politique-confidentialite" className="text-primary hover:underline">politique de confidentialité</Link>.
+                </p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">5. Liens externes</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">5. Services tiers utilisés</h2>
+                <p>
+                  Ce site utilise les services tiers suivants :
+                </p>
+                <ul className="list-disc pl-6 mt-4 space-y-2">
+                  <li><strong className="text-foreground">Netlify</strong> : hébergement du site web</li>
+                  <li><strong className="text-foreground">Formspree</strong> : traitement des formulaires de contact</li>
+                  <li><strong className="text-foreground">Google Analytics</strong> : analyse du trafic et statistiques (uniquement avec votre consentement)</li>
+                </ul>
+                <p className="mt-4">
+                  Ces services peuvent collecter et traiter certaines données personnelles conformément à leurs propres politiques de confidentialité. Pour plus d&apos;informations, consultez notre <Link href="/politique-confidentialite" className="text-primary hover:underline">politique de confidentialité</Link>.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">6. Liens externes</h2>
                 <p>
                   Le site peut contenir des liens vers d&apos;autres sites. L&apos;éditeur du site n&apos;a aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">6. Limitation de responsabilité</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">7. Limitation de responsabilité</h2>
                 <p>
                   L&apos;éditeur du site s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des informations diffusées sur ce site, dont il se réserve le droit de corriger, à tout moment et sans préavis, le contenu.
                 </p>
@@ -121,7 +140,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">7. Droit applicable</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">8. Droit applicable</h2>
                 <p>
                   Les présentes mentions légales sont régies par le droit français. En cas de litige et à défaut d&apos;accord amiable, le litige sera porté devant les tribunaux français conformément aux règles de compétence en vigueur.
                 </p>
