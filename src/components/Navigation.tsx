@@ -33,7 +33,7 @@ export default function Navigation() {
     if (href.includes('#')) {
       e.preventDefault()
       const [path, hash] = href.split('#')
-      if (window.location.pathname === path) {
+      if (window.location.pathname === path && hash) {
         const element = document.getElementById(hash)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' })
