@@ -10,10 +10,12 @@ import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Zap, MapPin, CheckCir
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
+  const [gdprConsent, setGdprConsent] = useState(false);
 
   const contactInfo = [
     { icon: Mail, text: "Mon mail", link: "mailto:antonin.gourinchas@gmail.com" },
@@ -229,6 +231,7 @@ export default function ContactPage() {
                     onLoad={() => {
                       setIsSubmitting(false);
                       setSubmitStatus('success');
+                      setGdprConsent(false);
                       const form = document.querySelector('form[action*="formspree"]') as HTMLFormElement;
                       if (form) {
                         form.reset();
@@ -317,6 +320,37 @@ export default function ContactPage() {
                     </motion.div>
                   )}
 
+                  {/* Case à cocher RGPD */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.45 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-3 p-4 rounded-lg bg-primary/5 border border-primary/10"
+                  >
+                    <input
+                      type="checkbox"
+                      id="gdpr-consent"
+                      name="gdpr-consent"
+                      checked={gdprConsent}
+                      onChange={(e) => setGdprConsent(e.target.checked)}
+                      required
+                      className="mt-1 w-4 h-4 text-primary border-primary/30 rounded focus:ring-primary focus:ring-2 cursor-pointer"
+                    />
+                    <label htmlFor="gdpr-consent" className="text-sm text-muted-foreground cursor-pointer flex-1">
+                      J&apos;accepte que mes données personnelles soient collectées et traitées conformément à la{" "}
+                      <Link 
+                        href="/politique-confidentialite" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline font-medium"
+                      >
+                        politique de confidentialité
+                      </Link>
+                      . Mes données seront utilisées uniquement pour répondre à ma demande.
+                    </label>
+                  </motion.div>
+
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -326,7 +360,7 @@ export default function ContactPage() {
                     <Button 
                       type="submit"
                       className="w-full group relative overflow-hidden"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || !gdprConsent}
                     >
                       <span className="relative z-10 flex items-center center gap-2">
                         {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
