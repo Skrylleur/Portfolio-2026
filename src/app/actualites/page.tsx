@@ -77,7 +77,7 @@ export default function ActualitesPage() {
                 </h2>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar className="w-4 h-4" />
-                  <span className="text-sm">{formatDate("2024-11-15")}</span>
+                  <span className="text-sm">{formatDate("2025-11-14")}</span>
                 </div>
               </div>
 

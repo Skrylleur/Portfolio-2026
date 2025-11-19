@@ -55,7 +55,7 @@ export default function ExperiencesPage() {
         title: 'Formateur en bureautique et Excel',
         organization: 'Cours particuliers',
         period: '2025',
-        description: 'Formation personnalisée d\'adultes en bureautique et Excel pour renforcer leur autonomie numérique.',
+        description: 'Formation personnalisée en bureautique et Excel pour renforcer l\'autonomie numérique de l\'élève.',
       },
       {
         title: 'Technicien informatique',
