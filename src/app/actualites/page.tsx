@@ -73,28 +73,19 @@ export default function ActualitesPage() {
               {/* Title and Date */}
               <div className="mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                  Fin de période d'essai chez Zaacom — recherche active d'une nouvelle alternance
+                  Recherche d'une alternance pour ma licence
                 </h2>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar className="w-4 h-4" />
-                  <span className="text-sm">{formatDate("2025-11-14")}</span>
+                  <span className="text-sm">{formatDate("2024-11-15")}</span>
                 </div>
               </div>
 
               {/* Content */}
               <div className="mt-6">
                 <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
-                  <p className="mb-4">
-                    Suite à une restructuration interne et à une réduction du budget dédiée aux alternants, mon employeur a dû mettre fin à ma période d'essai le 15 novembre. La décision n'est pas liée à mon travail, mais à des raisons strictement économiques.
-                  </p>
-                  <p className="mb-4">
-                    Je suis donc actuellement à la recherche urgente d'une alternance pour poursuivre ma Licence STS Développement Web et Mobile.
-                  </p>
                   <p>
-                    Je suis disponible immédiatement, motivé, autonome et déjà expérimenté grâce à mes précédentes missions en développement web, automatisation VBA et support informatique.
-                  </p>
-                  <p className="mt-4">
-                    Je reste entièrement mobilisé et prêt à rencontrer rapidement des entreprises intéressées.
+                    Je suis actuellement en recherche d'une alternance pour m'accompagner dans ma Licence STS Développement Web et Mobile.
                   </p>
                 </div>
               </div>
