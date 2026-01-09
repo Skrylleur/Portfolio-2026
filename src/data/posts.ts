@@ -10,13 +10,6 @@ export interface Post {
 
 export const posts: Post[] = [
   {
-    id: 'post-fin-alternance-zaacom',
-    title: 'Fin de période d\'essai et d\'alternance chez Zaacom - Recherche urgente d\'alternance',
-    date: '2025-11-14',
-    type: 'text',
-    content: 'Ce vendredi 14 novembre marque la fin de ma période d\'essai et de mon alternance chez Zaacom. L\'entreprise a mis un terme à ma période d\'essai pour des raisons économiques.\n\nDurant cette période, j\'ai eu l\'opportunité de travailler sur des projets variés, d\'améliorer mes compétences en développement web et mobile, et de contribuer à des solutions concrètes pour l\'entreprise. Je remercie toute l\'équipe pour leur accueil, leur bienveillance et les nombreux enseignements partagés.\n\nJe recherche maintenant urgemment une nouvelle alternance en développement web et mobile. J\'ai jusqu\'à la mi-janvier, soit environ 2 mois, pour retrouver une entreprise et poursuivre ma formation en Licence STS Développement applicatif web et mobile.\n\nSi vous connaissez une opportunité ou si votre entreprise recherche un alternant motivé et passionné par le développement, n\'hésitez pas à me contacter !',
-  },
-  {
     id: 'post-obtention-bts-sio',
     title: 'Obtention de mon BTS SIO option SLAM 🎓',
     date: '2025-06-30',
@@ -39,10 +32,10 @@ export const posts: Post[] = [
   },
   {
     id: 'post-debut-licence-sts',
-    title: 'Début de ma Licence STS Développement applicatif web et mobile en alternance',
+    title: 'Début de mon bachelor développeur web en alternance',
     date: '2025-08-25',
     type: 'text',
-    content: 'Aujourd\'hui marque le début d\'un nouveau chapitre passionnant : je démarre ma Licence STS Développement applicatif web et mobile en alternance.\n\nCette formation de niveau Bac+3 me permettra d\'approfondir mes compétences en développement web et mobile, avec un focus sur les technologies modernes et les meilleures pratiques du secteur.\n\nL\'alternance est pour moi une opportunité unique de mettre en pratique les connaissances acquises en cours tout en contribuant à des projets concrets en entreprise. Je suis impatient de relever de nouveaux défis techniques et de continuer à progresser dans ce domaine qui me passionne.\n\nUne nouvelle aventure commence !',
+    content: 'Aujourd\'hui marque le début d\'un nouveau chapitre passionnant : je démarre mon bachelor développeur web en alternance.\n\nCette formation de niveau Bac+3 me permettra d\'approfondir mes compétences en développement web et mobile, avec un focus sur les technologies modernes et les meilleures pratiques du secteur.\n\nL\'alternance est pour moi une opportunité unique de mettre en pratique les connaissances acquises en cours tout en contribuant à des projets concrets en entreprise. Je suis impatient de relever de nouveaux défis techniques et de continuer à progresser dans ce domaine qui me passionne.\n\nUne nouvelle aventure commence !',
   },
   {
     id: 'post-clap-de-fin-tacher-acogex',

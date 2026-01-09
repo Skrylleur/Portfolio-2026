@@ -14,7 +14,7 @@ export default function ExperiencesPage() {
   const experiences = {
     scolaire: [
       {
-        title: 'Licence STS Développement applicatif web et mobile',
+        title: 'Bachelor développeur web',
         organization: 'CaenSup Sainte Ursule, Caen',
         period: '2025 - 2026',
         description: 'Formation spécialisée en développement web et mobile (Next.js, Kotlin, Java Spring Boot) avec réalisation de projets complets.',

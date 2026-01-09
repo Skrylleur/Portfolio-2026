@@ -5,93 +5,19 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
+import Carousel from '@/components/Carousel';
+import { Calendar, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-interface LinkedInPostProps {
-  url: string;
-}
-
-function LinkedInPost({ url }: LinkedInPostProps) {
-  // Extraire l'ID du post depuis l'URL LinkedIn
-  const extractPostInfo = (linkedinUrl: string): { id: string; type: 'activity' | 'ugcPost' } | null => {
-    // Essayer d'abord avec activity-
-    const activityMatch = linkedinUrl.match(/activity-(\d+)/);
-    if (activityMatch && activityMatch[1]) {
-      return { id: activityMatch[1], type: 'activity' };
-    }
-    
-    // Ensuite avec ugcPost-
-    const ugcPostMatch = linkedinUrl.match(/ugcPost-(\d+)/);
-    if (ugcPostMatch && ugcPostMatch[1]) {
-      return { id: ugcPostMatch[1], type: 'ugcPost' };
-    }
-    
-    return null;
-  };
-
-  const postInfo = extractPostInfo(url);
-  
-  // URL d'embed LinkedIn
-  const embedUrl = postInfo 
-    ? `https://www.linkedin.com/embed/feed/update/urn:li:${postInfo.type}:${postInfo.id}`
-    : null;
-
-  return (
-    <div className="border border-primary/20 rounded-lg overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 backdrop-blur-sm">
-      {embedUrl ? (
-        <div className="relative w-full" style={{ minHeight: '400px' }}>
-          <iframe
-            src={embedUrl}
-            className="w-full border-0"
-            style={{ minHeight: '400px', height: 'auto' }}
-            title="Post LinkedIn"
-            allowFullScreen
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-          />
-        </div>
-      ) : (
-        <div className="p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-lg">AG</span>
-            </div>
-            <div>
-              <div className="font-semibold text-foreground">Antonin Gourinchas</div>
-              <div className="text-xs text-muted-foreground">LinkedIn</div>
-            </div>
-          </div>
-          <div className="mb-4">
-            <p className="text-sm text-muted-foreground mb-4">
-              Ce post est disponible sur LinkedIn. Cliquez sur le lien ci-dessous pour le consulter.
-            </p>
-          </div>
-          <Link
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium text-sm"
-          >
-            Voir le post sur LinkedIn
-            <ExternalLink className="w-4 h-4" />
-          </Link>
-        </div>
-      )}
-      <div className="p-4 border-t border-primary/20 bg-background/50">
-        <Link
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          Voir le post original sur LinkedIn
-          <ExternalLink className="w-3 h-3" />
-        </Link>
-      </div>
-    </div>
-  );
-}
+// Images du carrousel
+const carouselImages = [
+  '/Carrousel LinkedIn - recherche alternance décembre 2025/1.png',
+  '/Carrousel LinkedIn - recherche alternance décembre 2025/2.png',
+  '/Carrousel LinkedIn - recherche alternance décembre 2025/3.png',
+  '/Carrousel LinkedIn - recherche alternance décembre 2025/4.png',
+  '/Carrousel LinkedIn - recherche alternance décembre 2025/5.png',
+  '/Carrousel LinkedIn - recherche alternance décembre 2025/6.png',
+];
 
 export default function ActualitesPage() {
   const formatDate = (dateString: string) => {
@@ -102,6 +28,8 @@ export default function ActualitesPage() {
       day: 'numeric',
     });
   };
+
+  const today = new Date().toISOString().split('T')[0] as string;
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
@@ -158,17 +86,32 @@ export default function ActualitesPage() {
               {/* Title and Date */}
               <div className="mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                  À la recherche de ma prochaine aventure en alternance
+                  Recherche active d&apos;une alternance pour la rentrée de septembre 2026
                 </h2>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar className="w-4 h-4" />
-                  <span className="text-sm">{formatDate('2025-01-15')}</span>
+                  <span className="text-sm">{formatDate(today)}</span>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="mt-6">
-                <LinkedInPost url="https://www.linkedin.com/posts/antonin-gourinchas_recherche-dune-alternance-en-d%C3%A9veloppement-activity-7399108416939376640-1wqb?utm_source=share&utm_medium=member_desktop&rcm=ACoAADEevNoBP1fZg15DbR22kn2RUTVtoUGQBFU" />
+              <div className="mt-6 space-y-6">
+                <div className="prose prose-invert max-w-none">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Je recherche activement une alternance pour la rentrée de septembre 2026 dans le cadre de mon <strong className="text-foreground">bachelor développeur web</strong>.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Passionné par le développement web depuis plusieurs années, je souhaite rejoindre une entreprise qui me permettra de mettre en pratique mes compétences techniques tout en continuant ma formation. Mon parcours m&apos;a permis d&apos;acquérir une solide expérience en développement front-end (React, Next.js, TypeScript) et back-end (Java Spring Boot, Node.js, PHP), ainsi qu&apos;en automatisation avec VBA.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Je suis autonome, rigoureux et motivé à contribuer à des projets concrets. Si votre entreprise recherche un alternant développeur web pour septembre 2026, je serais ravi d&apos;échanger avec vous !
+                  </p>
+                </div>
+
+                {/* Carousel */}
+                <div className="mt-8">
+                  <Carousel images={carouselImages} alt="Carrousel recherche alternance" />
+                </div>
               </div>
             </Card>
           </motion.div>

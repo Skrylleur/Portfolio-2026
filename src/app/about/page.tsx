@@ -153,7 +153,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Aujourd&apos;hui, je cherche à rejoindre une entreprise pour poursuivre mon parcours en Licence STS Développement Web et Mobile, progresser aux côtés de professionnels expérimentés et contribuer à des projets concrets avec sérieux, autonomie et motivation.
+                Aujourd&apos;hui, je cherche à rejoindre une entreprise pour poursuivre mon parcours en bachelor développeur web, progresser aux côtés de professionnels expérimentés et contribuer à des projets concrets avec sérieux, autonomie et motivation.
               </motion.p>
             </div>
           </motion.div>

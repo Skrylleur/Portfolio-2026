@@ -202,7 +202,7 @@ export default function Home() {
             <br />
             <span className="text-primary">Spécialisé</span> dans la création de sites web modernes et l&apos;automatisation de vos processus métier.
             <br />
-            <span className="text-primary">Je recherche un entreprise</span> pour m'accompagner dans ma licence STS Développement applicatif web et mobile.
+            <span className="text-primary">Je recherche un entreprise</span> pour m'accompagner dans mon bachelor développeur web.
           </motion.p>
           
           <motion.div

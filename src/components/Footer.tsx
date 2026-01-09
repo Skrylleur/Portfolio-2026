@@ -28,7 +28,7 @@ export default function Footer() {
               Antonin Gourinchas
             </h3>
             <p className="text-sm text-muted-foreground mb-6 leading-relaxed max-w-md">
-              Développeur web et mobile passionné, étudiant en Licence STS Développement applicatif web et mobile. 
+              Développeur web et mobile passionné, étudiant en bachelor développeur web. 
               Futur créateur d&apos;applications web et mobiles.
             </p>
             <div className="flex gap-3">
