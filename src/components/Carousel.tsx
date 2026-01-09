@@ -14,6 +14,20 @@ interface CarouselProps {
 export default function Carousel({ images, alt = 'Carousel image' }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // S'assurer que le tableau d'images n'est pas vide
+  if (!images || images.length === 0) {
+    return null;
+  }
+
+  // S'assurer que l'index est valide
+  const safeIndex = Math.max(0, Math.min(currentIndex, images.length - 1));
+  const currentImage = images[safeIndex];
+
+  // Si l'image courante n'existe pas, retourner null
+  if (!currentImage) {
+    return null;
+  }
+
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
@@ -23,7 +37,9 @@ export default function Carousel({ images, alt = 'Carousel image' }: CarouselPro
   };
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    if (index >= 0 && index < images.length) {
+      setCurrentIndex(index);
+    }
   };
 
   return (
@@ -32,7 +48,7 @@ export default function Carousel({ images, alt = 'Carousel image' }: CarouselPro
       <div className="relative overflow-hidden rounded-lg bg-background/50 border border-primary/20">
         <AnimatePresence mode="wait">
           <motion.div
-            key={currentIndex}
+            key={safeIndex}
             initial={{ opacity: 0, x: 300 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -300 }}
@@ -41,11 +57,11 @@ export default function Carousel({ images, alt = 'Carousel image' }: CarouselPro
           >
             <div className="relative w-full aspect-[4/3] md:aspect-video">
               <Image
-                src={images[currentIndex]}
-                alt={`${alt} ${currentIndex + 1}`}
+                src={currentImage}
+                alt={`${alt} ${safeIndex + 1}`}
                 fill
                 className="object-contain"
-                priority={currentIndex === 0}
+                priority={safeIndex === 0}
               />
             </div>
           </motion.div>
@@ -83,7 +99,7 @@ export default function Carousel({ images, alt = 'Carousel image' }: CarouselPro
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex
+                  index === safeIndex
                     ? 'bg-primary w-6'
                     : 'bg-primary/30 hover:bg-primary/50'
                 }`}
@@ -97,7 +113,7 @@ export default function Carousel({ images, alt = 'Carousel image' }: CarouselPro
       {/* Image Counter */}
       {images.length > 1 && (
         <div className="mt-2 text-center text-sm text-muted-foreground">
-          {currentIndex + 1} / {images.length}
+          {safeIndex + 1} / {images.length}
         </div>
       )}
     </div>
