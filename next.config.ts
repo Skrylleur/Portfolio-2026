@@ -107,10 +107,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
 
-  // Optimisations d'ESLint
-  eslint: {
-    ignoreDuringBuilds: true, // Désactivé temporairement pour permettre le build
-  },
+  // Configuration Turbopack (requis pour Next.js 16)
+  turbopack: {},
 };
 
 export default nextConfig;
