@@ -46,6 +46,24 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: '/revise',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        source: '/revise/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
         source: '/api/(.*)',
         headers: [
           {
@@ -55,6 +73,13 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+
+  async rewrites() {
+    return [
+      { source: '/revise', destination: '/revise/index.html' },
+      { source: '/revise/', destination: '/revise/index.html' },
+    ]
   },
 
   // Optimisations de build

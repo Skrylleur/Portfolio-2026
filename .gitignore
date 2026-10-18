@@ -16,6 +16,9 @@
 # next.js
 /.next/
 /out/
+/public/revise
+/apps/vocabulaire/node_modules
+/apps/vocabulaire/dist
 
 # production
 /build

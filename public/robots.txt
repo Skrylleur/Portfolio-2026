@@ -12,6 +12,8 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /revise
+Disallow: /revise/
 
 # Autoriser l'accès aux ressources importantes
 Allow: /favicon.ico

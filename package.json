@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build:revise": "npm --prefix apps/vocabulaire ci && npm --prefix apps/vocabulaire run build",
+    "build": "npm run build:revise && next build",
     "start": "next start",
     "lint": "next lint"
   },
